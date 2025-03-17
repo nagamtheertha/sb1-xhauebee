@@ -1,6 +1,8 @@
 import React from 'react';
 import { Users, Target, Award } from 'lucide-react';
 
+
+
 const About = () => {
   return (
     <div className="bg-white">
@@ -100,7 +102,7 @@ const About = () => {
               {
                 name: 'Rajkumar Chadarasupalli',
                 role: 'Education Consultant',
-                image: './src/images/Raj.jpg',
+                image: 'images/Raj.jpg',
               },
               {
                 name: 'Michael Chen',
