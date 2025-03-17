@@ -100,7 +100,7 @@ const About = () => {
               {
                 name: 'Rajkumar Chadarasupalli',
                 role: 'Education Consultant',
-                image: 'https://drive.google.com/file/d/1gLbNOE3LMfwZCt1LiLm-fYHZhmmL0W5I/view?usp=sharing',
+                image: 'src/images/Raj_pic.jpg',
               },
               {
                 name: 'Michael Chen',
@@ -110,7 +110,7 @@ const About = () => {
               {
                 name: 'Theertha Nagam',
                 role: 'Visa Specialist',
-                image: 'https://imgur.com/a/d95xdl3',
+                image: 'src/images/Theertha_pic.png',
               },
             ].map((member, index) => (
               <div key={index} className="text-center">
