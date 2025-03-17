@@ -100,7 +100,7 @@ const About = () => {
               {
                 name: 'Rajkumar Chadarasupalli',
                 role: 'Education Consultant',
-                image: 'src/images/Raj.JPG',
+                image: './src/images/Raj.jpg',
               },
               {
                 name: 'Michael Chen',
@@ -110,7 +110,7 @@ const About = () => {
               {
                 name: 'Theertha Nagam',
                 role: 'Visa Specialist',
-                image: 'src/images/Theertha.PNG',
+                image: './src/images/Theertha.png',
               },
             ].map((member, index) => (
               <div key={index} className="text-center">
