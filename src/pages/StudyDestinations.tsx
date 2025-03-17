@@ -5,7 +5,7 @@ const StudyDestinations = () => {
   const destinations = [
     {
       country: 'USA',
-      image: 'src/images/usa.jpg',
+      image: 'src/images/usa.JPG',
       description: 'Home to world-renowned universities like Harvard, MIT, and Stanford.',
       universities: '4,000+',
       avgTuition: '$20,000 - $50,000',
