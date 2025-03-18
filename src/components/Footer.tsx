@@ -16,7 +16,7 @@ const Footer = () => {
               Your trusted partner in international education consulting, helping students achieve their dreams of studying abroad.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition">
+              <a href="https://www.facebook.com/profile.php?id=61550287021481&ref=ig_profile_ac" target="_blank" className="text-gray-400 hover:text-white transition">
                 <Facebook className="h-5 w-5" />
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition">
@@ -25,7 +25,7 @@ const Footer = () => {
               <a href="#" className="text-gray-400 hover:text-white transition">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition">
+              <a href="https://www.instagram.com/western_educonnect/" target="_blank" className="text-gray-400 hover:text-white transition">
                 <Instagram className="h-5 w-5" />
               </a>
             </div>
@@ -45,9 +45,6 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/success-stories" className="text-gray-400 hover:text-white transition">Success Stories</Link>
-              </li>
-              <li>
-                <Link to="/blog" className="text-gray-400 hover:text-white transition">Blog</Link>
               </li>
             </ul>
           </div>

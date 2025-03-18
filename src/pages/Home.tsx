@@ -1,20 +1,8 @@
-import React, { useState } from 'react';
-import { Search, ArrowRight, GraduationCap, BookOpen, Users, Globe } from 'lucide-react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { GraduationCap, BookOpen, Users, Globe } from 'lucide-react';
 
 const Home = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCountry, setSelectedCountry] = useState('');
-
-  const countries = [
-    'USA',
-    'UK',
-    'Canada',
-    'Australia',
-    'New Zealand',
-    'Ireland',
-    'Germany',
-  ];
-
   const features = [
     {
       icon: <GraduationCap className="h-8 w-8 text-blue-600" />,
@@ -57,40 +45,12 @@ const Home = () => {
             <p className="text-xl text-blue-100 mb-12 max-w-3xl mx-auto animate-fade-in-delay-1">
               Expert guidance for international education, helping you choose the right university and course abroad
             </p>
-            
-            {/* Search Section */}
-            <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6 animate-fade-in-delay-2">
-              <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                <div className="flex-1">
-                  <select
-                    value={selectedCountry}
-                    onChange={(e) => setSelectedCountry(e.target.value)}
-                    className="w-full px-4 py-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
-                  >
-                    <option value="">Select Destination</option>
-                    {countries.map((country) => (
-                      <option key={country} value={country}>{country}</option>
-                    ))}
-                  </select>
-                </div>
-                <div className="flex-1">
-                  <div className="relative">
-                    <input
-                      type="text"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Search courses..."
-                      className="w-full px-4 py-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
-                    />
-                    <Search className="absolute right-3 top-3 h-5 w-5 text-gray-400" />
-                  </div>
-                </div>
-                <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition duration-150 flex items-center justify-center">
-                  Search
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </button>
-              </div>
-            </div>
+            <Link
+              to="/contact"
+              className="inline-block bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition duration-150 animate-fade-in-delay-2"
+            >
+              Schedule Free Consultation
+            </Link>
           </div>
         </div>
       </section>
@@ -126,9 +86,12 @@ const Home = () => {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Book a free consultation with our education experts and take the first step towards your international education
           </p>
-          <button className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition duration-150">
+          <Link
+            to="/contact"
+            className="inline-block bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition duration-150"
+          >
             Schedule Free Consultation
-          </button>
+          </Link>
         </div>
       </section>
     </div>

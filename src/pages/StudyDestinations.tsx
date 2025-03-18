@@ -1,11 +1,12 @@
 import React from 'react';
 import { GraduationCap, BookOpen, DollarSign, Clock } from 'lucide-react';
+import UsaImage from '../assets/images/usa.jpg';
 
 const StudyDestinations = () => {
   const destinations = [
     {
       country: 'USA',
-      image: './src/images/usa.jpg',
+      image: UsaImage,
       description: 'Home to world-renowned universities like Harvard, MIT, and Stanford.',
       universities: '4,000+',
       avgTuition: '$20,000 - $50,000',
@@ -94,9 +95,6 @@ const StudyDestinations = () => {
                       </div>
                     </div>
                   </div>
-                  <button className="mt-8 bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-150">
-                    Learn More
-                  </button>
                 </div>
               </div>
             ))}

@@ -11,7 +11,6 @@ const Navbar = () => {
     { name: 'Study Destinations', href: '/study-destinations' },
     { name: 'Services', href: '/services' },
     { name: 'Success Stories', href: '/success-stories' },
-    { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -37,9 +36,12 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition duration-150">
+            <Link 
+              to="/contact"
+              className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition duration-150"
+            >
               Free Consultation
-            </button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -67,9 +69,13 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
-              <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition duration-150">
+              <Link
+                to="/contact"
+                className="block w-full bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition duration-150"
+                onClick={() => setIsOpen(false)}
+              >
                 Free Consultation
-              </button>
+              </Link>
             </div>
           </div>
         )}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Users, Target, Award } from 'lucide-react';
-
-
+import RajPic from '../assets/images/Raj.jpg';
+import TheerthaPic from '../assets/images/Theertha.png';
 
 const About = () => {
   return (
@@ -102,7 +102,7 @@ const About = () => {
               {
                 name: 'Rajkumar Chadarasupalli',
                 role: 'Education Consultant',
-                image: 'images/Raj.jpg',
+                image: RajPic,
               },
               {
                 name: 'Michael Chen',
@@ -112,7 +112,7 @@ const About = () => {
               {
                 name: 'Theertha Nagam',
                 role: 'Visa Specialist',
-                image: './src/images/Theertha.png',
+                image: TheerthaPic,
               },
             ].map((member, index) => (
               <div key={index} className="text-center">
