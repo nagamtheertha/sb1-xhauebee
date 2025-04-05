@@ -1,9 +1,72 @@
-import React from 'react';
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Mail, Phone, MapPin, Clock, CheckCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const form = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!form.current) return;
+
+    try {
+      setIsSubmitting(true);
+      
+      await emailjs.sendForm(
+        'service_tgbp3j5',
+        'template_q5c8tqm',
+        form.current,
+        '72cD3-gs_x6-CwpIB'
+      );
+      
+      // Clear form after submission
+      setFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      });
+
+      // Show success message
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 5000); // Hide after 5 seconds
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert('There was an error sending your message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="bg-white">
+      {/* Success Message Popup */}
+      {showSuccess && (
+        <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 flex items-center animate-fade-in">
+          <CheckCircle className="h-5 w-5 mr-2" />
+          Message sent successfully!
+        </div>
+      )}
+
       {/* Hero Section */}
       <section className="relative bg-blue-900 text-white py-20">
         <div className="absolute inset-0">
@@ -40,7 +103,6 @@ const Contact = () => {
                 <div className="flex items-start space-x-4">
                   <div className="bg-blue-100 p-3 rounded-full">
                     <Phone className="h-6 w-6 text-blue-600" />
-                  
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg">Call Us</h3>
@@ -55,11 +117,11 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-lg">Visit Us</h3>
                     <span className="text-gray-400">
-                  Mahanadu Road Opp NTR Health University,<br />
-                  Vijayawada, Andhra Pardesh,<br />
-                  520004,<br />
-                  India
-                </span>
+                      Mahanadu Road Opp NTR Health University,<br />
+                      Vijayawada, Andhra Pardesh,<br />
+                      520004,<br />
+                      India
+                    </span>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -78,13 +140,17 @@ const Contact = () => {
             {/* Contact Form */}
             <div className="bg-white p-8 rounded-xl shadow-lg">
               <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-              <form className="space-y-6">
+              <form ref={form} onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name
                   </label>
                   <input
                     type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
@@ -94,6 +160,10 @@ const Contact = () => {
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
@@ -103,6 +173,10 @@ const Contact = () => {
                   </label>
                   <input
                     type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
@@ -112,6 +186,10 @@ const Contact = () => {
                   </label>
                   <input
                     type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
@@ -120,15 +198,20 @@ const Contact = () => {
                     Message
                   </label>
                   <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
                     rows={4}
                     className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-150"
+                  disabled={isSubmitting}
+                  className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>
